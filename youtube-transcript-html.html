@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube トランスクリプト自動スクロール</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #666;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        #chapter-list {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        #chapter-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #chapter-list li {
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #chapter-list li:hover {
+            background-color: #e8f4f8;
+        }
+
+        .transcript-accordion {
+            margin-top: 30px;
+        }
+
+        .transcript-accordion summary {
+            cursor: pointer;
+            padding: 15px 20px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1em;
+            user-select: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .transcript-accordion summary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .transcript-accordion[open] summary {
+            background-color: #e8f4f8;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .code-example {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        pre code {
+            display: block;
+            padding: 15px;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <h1>YouTube トランスクリプト自動スクロール デモ</h1>
+
+    <p>聴覚障害者の方々のアクセシビリティ向上を目的とした、YouTube動画のトランスクリプト自動スクロール機能のデモです。</p>
+
+    <h2>音声配信</h2>
+
+    <p>こんにちは、ナオです。今回は、初回ですが、私自身がポッドキャストにルールを設けることによってリスナーさんにとって、聴きやすいポッドキャストを目指すという趣旨を説明した音声配信となっております。</p>
+
+    <div id="player" class="youtube-ratio" data-id="_yyBJeZgACA"></div>
+
+    <h2>目次</h2>
+
+    <div id="chapter-list">
+00:00 初回のポッドキャストの自己紹介って必要性ある？
+00:26 ラジオの聴取率の9割は開始10秒で決まる
+01:28 ポッドキャストのオリジナルルールの必要性
+01:47 ルール１：冒頭のあいさつすらせずに、本題に入る
+02:59 ルール２：背景BGMは一切使用しない
+04:00 ルール３：概要欄に、時間を入れた目次と説明を追加する
+04:26 配信は、日々のアップデートしながらクオリティーの向上を目指す
+05:14 最後の挨拶
+    </div>
+
+    <details class="transcript-accordion">
+        <summary>📝 文字起こしを表示</summary>
+        <!-- トランスクリプトコンテナは JavaScript で動的に生成されます -->
+    </details>
+
+    <!-- トランスクリプトデータソース（非表示） -->
+    <div id="transcript-source">
+        <!-- 方法1: データ属性を使用した構造化データ -->
+        <div class="transcript-segment" data-timestamp="00:01">
+            大抵の初回のポッドって自己紹介から 始まることが多いですよねそれで思ったん ですけれども初回のポッドキャストは自己 紹介を必ずしも入れなくてはいけないのか についてをふと疑問に思いまして自己紹介 って概要欄にかけるから別にいいのかなっ てふと考えたんですよでラジオの上収率の 9りっていうのは実は開始10秒で聞くか 聞かないかを判断されるっていうことが あってすごいシビアな世界なんですねなの でこれはポッドキャストも音声配信なので 当然ながら適用されるルールだと思ってい ますそのため先ほどあげた自己紹介って いうのを初回でもちろん挨拶も含めて入れ るっていう風になると魅力的な自己紹介で あれば確かに今後も聞いてみようっていう 風にリスナーさんには届くかもしれないん ですけれどもそこまで魅力的ではないなっ て思ったら残念ながらその初回だけは一時
+        </div>
+        <div class="transcript-segment" data-timestamp="01:07">
+            的に聞いてくださる方が多くなって次回 以降も聞こうかっていう風になると微妙に なっくるのではないのだろうかっていうふ と考えたんですねそこで今回タイトルにも あるように初回だからこそなおこの私の ポッドキャストについてルールを設ける ことにしましたやはり個人の ポッドキャストだからこそオリジナルの ルールを設けることで他のポッドキャスト と一戦を隠すというやり方ですこれが こうすかどうかは分からないんですけれど もちょっと実験的にやってみようかなと 思いまして今回設けたルールは3つあり まして1つ目は冒頭の挨拶すらせずに本題 に入るということですこれ実はこの エピソードからすでに導入されてるんです よ普通だったらこんにちはなおです今回の えー初回のエピソードになるから今回は私 の自己紹介については話したいと思います
+        </div>
+        <div class="transcript-segment" data-timestamp="02:12">
+            みたいな感じになると思うんですよねそれ かポドキャストの説明してえ私の ポッドキャストではこういうことをして こういうことをしますみたいなことを冒頭 に入れると思うんですけどこういった冒頭 の挨拶させずに本題に入ることをしてい ますで自己紹介は興味がある方は概要欄を 見るはずなんですよなのでえ本題に入って このポッドキャストの配信者はどういう人 なんだろうっていう風に思ったら必ず概要 欄を見るはずなのでこの冒頭の挨拶を不要 にしてね効率化を測ってみるというそう いうやり方をしてみようかなと思います やはり本題にスピーに入るっていうことは リスナーにとってもストレスがなくなるの ではないのかっていうちょっと実験的な ことをやってみたいなと思ったからです その次のルールは背景BGMは一切使用し ないこれは音声に集中しやすくするためと リスナーがその聞きたいBGMとは限らな いっていうのもあって別にBGMは実際
+        </div>
+        <div class="transcript-segment" data-timestamp="03:18">
+            使用しなくてもいいのではないのだろう かっていう風に思ったんですねそれにこの ポッドキャストを聞いてる間になんか音楽 がないとつまらないなって思えば裏でね また音声というか音楽を流しても聞ける ようにすることも可能にできると思うので まそういうこともできると思う思う多分 できるはずなのでえ私はパソコンからやっ てるのでできるんですけどスマホだと多分 アプリを利用すれば多分できると思うん ですよねバックグラウンドでなのでこれも そういう配慮となっておりますでできるよ ねちょっと自信ないけどえでルール3は 概要欄に時間を入れた目次と説明を追加 するを実行していますこのポッドキャスト でもすでに目次が追加されてると思うん ですけどこのようにねポッドキャストを 聞くかどうかの判断材料になることや聞き たい部分だけを聞けるため長くなっても 時間短縮ができるための配慮として実行さ
+        </div>
+        <div class="transcript-segment" data-timestamp="04:23">
+            せていただきたいと思いますということで え完璧な配信っていうのは私は最初から できるとは思っていなくて今さっきもね ちょっとグダグダになってしまった部分も あるかもしれないしちょっと話し方もねえ 不自然に見えたかもしれないしっていうの も多分あると思うんですけれども初回の エピソードで完璧をモぜすってことは 私自身はしてないのでこれもあくまで スタイルとして少しずつアップデートして いっでより一層エピソードであのお聞きに なられる方リスナーの方々に楽しんで もらえるようにえ役に立っていただける ようなそんなポドキャストを目指したいと 思っていますのでえ今後ともよろしくお 願いいたしますということで今回はこちら のポッドキャストのルールについてご説明 させていただきましたえ以上なんです けれどもまた次回もね是非とも聞いて いただけることを切に心から願っており
+        </div>
+        <div class="transcript-segment" data-timestamp="05:31">
+            ます次回もなるべくいい配信にあ今いい 配信だったのかわからないですけどでも いい配信になれるように頑張りますので 是非とも期待して聞いていただければ幸い でございます以上です
+        </div>
+
+        <!-- 方法2: プレーンテキスト形式（後方互換性）
+        (00:01) 大抵の初回のポッドって自己紹介から...
+        (01:07) 的に聞いてくださる方が多くなって...
+        -->
+    </div>
+
+    <h2>使い方</h2>
+
+    <ol>
+        <li><strong>チャプター機能</strong>: 目次の項目をクリックすると、動画の該当箇所にジャンプします</li>
+        <li><strong>文字起こし表示</strong>: 「📝 文字起こしを表示」をクリックすると、トランスクリプトが表示されます</li>
+        <li><strong>自動スクロール</strong>: 動画の再生に合わせて、現在話されている部分が自動的にハイライトされ、スクロールします</li>
+        <li><strong>同期機能</strong>: チャプターをクリックすると、文字起こしも該当箇所に自動的にスクロールします</li>
+        <li><strong>インタラクティブ</strong>: 文字起こしの各セグメントをクリックすると、その箇所から再生できます</li>
+    </ol>
+
+    <h2>実装方法</h2>
+
+    <h3>1. 基本的なHTML構造</h3>
+
+    <div class="code-example">
+        <pre><code>&lt;!-- YouTube プレーヤー --&gt;
+&lt;div id="player" class="youtube-ratio" data-id="VIDEO_ID"&gt;&lt;/div&gt;
+
+&lt;!-- チャプターリスト --&gt;
+&lt;div id="chapter-list"&gt;
+00:00 チャプタータイトル1
+00:30 チャプタータイトル2
+01:45 チャプタータイトル3
+&lt;/div&gt;
+
+&lt;!-- トランスクリプトアコーディオン --&gt;
+&lt;details class="transcript-accordion"&gt;
+    &lt;summary&gt;📝 文字起こしを表示&lt;/summary&gt;
+&lt;/details&gt;
+
+&lt;!-- トランスクリプトデータ（非表示） --&gt;
+&lt;div id="transcript-source"&gt;
+    &lt;div class="transcript-segment" data-timestamp="00:01"&gt;
+        ここに文字起こしテキスト1
+    &lt;/div&gt;
+    &lt;div class="transcript-segment" data-timestamp="00:30"&gt;
+        ここに文字起こしテキスト2
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <h3>2. トランスクリプトデータの形式</h3>
+
+    <p>トランスクリプトデータは2つの形式に対応しています：</p>
+
+    <h4>形式1: データ属性を使用（推奨）</h4>
+    <div class="code-example">
+        <pre><code>&lt;div id="transcript-source"&gt;
+    &lt;div class="transcript-segment" data-timestamp="00:01"&gt;
+        最初のセグメントのテキスト
+    &lt;/div&gt;
+    &lt;div class="transcript-segment" data-timestamp="00:30"&gt;
+        次のセグメントのテキスト
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <h4>形式2: プレーンテキスト（後方互換性）</h4>
+    <div class="code-example">
+        <pre><code>&lt;div id="transcript-source"&gt;
+(00:01) 最初のセグメントのテキスト
+(00:30) 次のセグメントのテキスト
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <h3>3. WordPress/Ghostでの実装例</h3>
+
+    <p>WordPressやGhostのカスタムHTMLブロックで以下のように実装できます：</p>
+
+    <div class="code-example">
+        <pre><code>&lt;!-- カスタムHTMLブロック --&gt;
+&lt;div id="player" class="youtube-ratio" data-id="_yyBJeZgACA"&gt;&lt;/div&gt;
+
+&lt;div id="chapter-list"&gt;
+00:00 イントロダクション
+01:30 メイントピック
+03:45 まとめ
+&lt;/div&gt;
+
+&lt;details class="transcript-accordion"&gt;
+    &lt;summary&gt;📝 文字起こしを表示&lt;/summary&gt;
+&lt;/details&gt;
+
+&lt;div id="transcript-source"&gt;
+    &lt;div data-timestamp="00:00"&gt;
+        こんにちは、今回のエピソードでは...
+    &lt;/div&gt;
+    &lt;div data-timestamp="01:30"&gt;
+        それでは本題に入りますが...
+    &lt;/div&gt;
+    &lt;div data-timestamp="03:45"&gt;
+        今回のまとめとして...
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src="path/to/youtube-transcript-autoscroll.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <h2>アクセシビリティ機能</h2>
+
+    <ul>
+        <li>動画の音声内容をテキストで確認できます</li>
+        <li>現在の再生位置が視覚的に分かりやすくハイライトされます</li>
+        <li>任意の箇所から再生を開始できます</li>
+        <li>文字起こしは必要な時だけ表示できるため、画面を有効活用できます</li>
+        <li>スクリーンリーダーでも内容を読み上げ可能です</li>
+    </ul>
+
+    <h2>カスタマイズのポイント</h2>
+
+    <ul>
+        <li><code>#transcript-source</code>要素は自動的に非表示になります</li>
+        <li>タイムスタンプは <code>MM:SS</code> または <code>HH:MM:SS</code> 形式に対応</li>
+        <li>CSSクラスを追加してデザインをカスタマイズ可能</li>
+        <li>複数の動画を同一ページに配置する場合は、IDを変更してください</li>
+    </ul>
+
+    <!-- JavaScript ファイルを読み込み -->
+    <script src="youtube-transcript-autoscroll.js"></script>
+</body>
+</html>
