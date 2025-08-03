@@ -84,7 +84,7 @@ function onPlayerStateChange(event) {
 function initializeTranscript() {
   // HTMLからトランスクリプトデータを取得
   const transcriptSource = document.getElementById('transcript-source');
-
+  
   if (!transcriptSource) {
     console.warn('Transcript source element not found');
     return;
@@ -92,13 +92,13 @@ function initializeTranscript() {
 
   // 複数の形式に対応
   const transcriptItems = transcriptSource.querySelectorAll('.transcript-segment, [data-timestamp]');
-
+  
   if (transcriptItems.length > 0) {
     // データ属性形式の場合
     transcriptItems.forEach(item => {
       const timestamp = item.getAttribute('data-timestamp');
       const text = item.textContent.trim();
-
+      
       if (timestamp && text) {
         const seconds = timeToSeconds(timestamp);
         transcriptData.push({ time: timestamp, text, seconds });
@@ -152,14 +152,14 @@ function createTranscriptContainer() {
     p.setAttribute('data-index', index);
     p.setAttribute('data-seconds', item.seconds);
     p.innerHTML = `<span class="transcript-time">${item.time}</span> ${item.text}`;
-
+    
     // クリックで該当箇所にシーク
     p.addEventListener('click', () => {
       if (player && typeof player.seekTo === 'function') {
         player.seekTo(item.seconds, true);
       }
     });
-
+    
     contentDiv.appendChild(p);
   });
 }
@@ -173,18 +173,12 @@ function observeAccordion() {
     return;
   }
 
-  // MutationObserverで開閉を監視
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
-        const isOpen = detailsElement.hasAttribute('open');
-        handleAccordionToggle(isOpen);
-      }
-    });
+  // toggleイベントを使用（より確実）
+  detailsElement.addEventListener('toggle', (event) => {
+    const isOpen = event.target.open;
+    console.log('Accordion toggled:', isOpen);
+    handleAccordionToggle(isOpen);
   });
-
-  // 監視開始
-  observer.observe(detailsElement, { attributes: true });
 
   // 初期状態をチェック
   if (detailsElement.hasAttribute('open')) {
@@ -194,27 +188,40 @@ function observeAccordion() {
 
 // アコーディオンの開閉時の処理
 function handleAccordionToggle(isOpen) {
+  console.log('handleAccordionToggle called with:', isOpen);
+  
   const container = document.getElementById('transcript-container');
-
+  
   if (isOpen) {
+    console.log('Opening accordion...');
     // コンテナがなければ作成
     if (!container) {
+      console.log('Creating transcript container...');
       createTranscriptContainer();
+      // 作成後、表示を確実にする
+      setTimeout(() => {
+        const newContainer = document.getElementById('transcript-container');
+        if (newContainer) {
+          newContainer.style.display = 'block';
+        }
+      }, 100);
     } else {
+      console.log('Showing existing container...');
       container.style.display = 'block';
     }
-
+    
     // 現在の再生位置に合わせてスクロール
     if (player && typeof player.getCurrentTime === 'function') {
       const currentTime = player.getCurrentTime();
       scrollToCurrentTime(currentTime);
     }
-
+    
     // 再生中であればトラッキングを開始
     if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
       startTranscriptTracking();
     }
   } else {
+    console.log('Closing accordion...');
     // アコーディオンを閉じたときはコンテナを非表示
     if (container) {
       container.style.display = 'none';
@@ -227,7 +234,7 @@ function handleAccordionToggle(isOpen) {
 function startTranscriptTracking() {
   // 既存のインターバルがあればクリア
   stopTranscriptTracking();
-
+  
   // 100ミリ秒ごとに現在時間をチェック
   timeUpdateInterval = setInterval(() => {
     if (player && typeof player.getCurrentTime === 'function') {
@@ -282,16 +289,16 @@ function highlightTranscriptItem(index) {
 function scrollToTranscriptItem(index) {
   const activeItem = document.querySelector(`.transcript-item[data-index="${index}"]`);
   const container = document.getElementById('transcript-box');
-
+  
   if (activeItem && container) {
     // スムーズスクロール
     const itemTop = activeItem.offsetTop;
     const containerHeight = container.clientHeight;
     const itemHeight = activeItem.clientHeight;
-
+    
     // アイテムを中央に配置
     const scrollPosition = itemTop - (containerHeight / 2) + (itemHeight / 2);
-
+    
     container.scrollTo({
       top: scrollPosition,
       behavior: 'smooth'
@@ -395,7 +402,7 @@ function handleChapterClick(event) {
   // playerオブジェクトとseekToメソッドの存在を確認
   if (player && typeof player.seekTo === 'function') {
     player.seekTo(seconds, true); // 指定秒数に移動し、再生を開始
-
+    
     // トランスクリプトも同期
     scrollToCurrentTime(seconds);
   } else {
