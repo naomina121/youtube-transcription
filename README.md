@@ -1,6 +1,6 @@
 ## YouTubeに字幕を同期！聴覚障害者向けトランスクリプト自動スクロール機能の実装
 
-文字起こしは、「youtube summary with chatgpt & claude」などのChromeの拡張機能からとっています。
+文字起こしは、「youtube summary with chatgpt & claude」などのChromeの拡張機能からとっていましたがSRT形式でHTMLに変換したものを採用しました。
 
 <img width="1024" height="897" alt="image" src="https://github.com/user-attachments/assets/537502f2-fd5d-4dd1-9ae7-dc858849f193" />
 <img width="1080" height="686" alt="image" src="https://github.com/user-attachments/assets/9cff00bc-42c3-42ba-97a1-521b0fb33bc8" />
